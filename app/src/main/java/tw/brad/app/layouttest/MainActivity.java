@@ -6,6 +6,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedList;
+
 public class MainActivity extends AppCompatActivity {
     private String answer;
     private EditText input;
@@ -21,8 +25,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String createAnswer(){
-        // TODO
-        return "274";
+        HashSet<Integer> set = new HashSet<>();
+        while (set.size()<3){
+            set.add((int)(Math.random()*10));
+        }
+        LinkedList<Integer> list = new LinkedList<>();
+        for (Integer i : set){
+            list.add(i);
+        }
+        Collections.shuffle(list);
+        String ret = "";
+        for (Integer i : list){
+            ret += i;
+        }
+        Log.v("brad", ret);
+        return ret;
     }
 
     private String checkAB(String guess){
